@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using api_bot.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using api_bot.Services; 
+using api_bot.models;   
 
 namespace api_bot.Controllers
 {
@@ -12,32 +9,20 @@ namespace api_bot.Controllers
     [Route("api/[controller]")]
     public class clientController : ControllerBase
     {
-        private readonly AppDbContext _appDbContext;
+      
+        private readonly ClientServiceImp _clientService;
 
-        public clientController(AppDbContext appDbContext)
+        
+        public clientController(ClientServiceImp clientService)
         {
-            _appDbContext = appDbContext;
+            _clientService = clientService;
         }
 
         [HttpPost("buscar")]
-        public async Task<IActionResult> BuscarPorCpf([FromBody] models.BuscaRequest request)
+        public async Task<IActionResult> BuscarPorCpf([FromBody] BuscaRequest request)
         {
-            if (string.IsNullOrEmpty(request.Documento))
-            {
-                return BadRequest("O número do documento deve ser informado.");
-            }
-
-           
-            var cliente = await _appDbContext.PESSOA
-                .AsNoTracking()
-                .FirstOrDefaultAsync(c => c.CPF == request.Documento);
-
-            if (cliente == null)
-            {
-                return NotFound("Cliente não encontrado com este CPF.");
-            }
-
-            return Ok(cliente);
+            var resultado = await _clientService.BuscarPorCpfAsync(request.Documento);
+            return Ok(resultado);
         }
     }
 }

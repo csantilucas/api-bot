@@ -1,10 +1,11 @@
 using api_bot.Data;
 using Microsoft.EntityFrameworkCore;
+using api_bot.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddScoped<ClientServiceImp, ClientService>();
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
