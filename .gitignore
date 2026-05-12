@@ -1,0 +1,26 @@
+# --- .NET / C# ---
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.user
+*.suo
+
+# --- Configurações Sensíveis (Onde está sua senha do SQL) ---
+appsettings.Development.json
+appsettings.json
+# Dica: Se precisar subir o appsettings, use o Secret Manager (ver abaixo)
+
+# --- Docker ---
+.dockerignore
+**/obj/Docker/
+
+# --- VS Code ---
+.vscode/
+.history/
+*.log
+
+# --- Windows ---
+Thumbs.db
+desktop.ini
