@@ -1,5 +1,3 @@
-
-using System.Data.Common;
 using api_bot.models;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,20 +5,31 @@ namespace api_bot.Data
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions options): base(options){}
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<Client> PESSOA {get;set;}
+        // Tabelas disponíveis no Banco
+        public DbSet<Client> PESSOA { get; set; }
+        public DbSet<Movim> MOVIM { get; set; }
 
-        // index para a busca mais rapida
         protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // --- Configuração da Tabela PESSOA ---
+            modelBuilder.Entity<Client>(entity =>
             {
-                modelBuilder.Entity<Client>(entity =>{
-                // Garante que o EF aponte para a tabela correta
-                entity.ToTable("PESSOA"); 
-                // Configura o índice para o CPF
+                entity.ToTable("PESSOA");
+                entity.HasKey(e => e.ID_CLIENTE);
+                
+                // Índice para busca rápida por CPF
                 entity.HasIndex(c => c.CPF)
                       .HasDatabaseName("IX_PESSOA_CPF");
             });
-            }
+
+            // --- Configuração da Tabela MOVIM ---
+            modelBuilder.Entity<Movim>(entity =>
+            {
+                entity.ToTable("MOVIM");
+                entity.HasKey(e => e.ID_LAN);
+            });
+        }
     }
 }

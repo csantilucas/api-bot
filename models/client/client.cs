@@ -20,5 +20,7 @@ namespace api_bot.models
         public string CPF { get; set; }
         
     }
+
+    
 }
 
