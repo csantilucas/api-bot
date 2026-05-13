@@ -26,7 +26,8 @@ namespace api_bot.Services
                     .OrderByDescending(v => v.DT_ENTREGA)
                     .Take(quantidade) 
                     .Select(v => new ClientDebtDto
-                    {
+                    {   
+                        numeroVenda = v.NUMBER,
                         Data = v.DT_ENTREGA,
                         // Cálculo do TOTAL_GERAL (mesma lógica do seu SQL)
                         Valor = v.TOTAL + v.RECEBIDO + 

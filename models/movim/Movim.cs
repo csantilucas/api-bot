@@ -8,7 +8,7 @@ namespace api_bot.models
     {
         [Key] // Agora o erro de 'Key' some
         public int ID_LAN { get; set; }
-        
+        public int NUMBER {get; set;}
         public DateTime DT_ENTREGA { get; set; }
         public string HORA_ABRIU { get; set; }
         public decimal TOTAL { get; set; }
