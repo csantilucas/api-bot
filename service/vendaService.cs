@@ -19,6 +19,7 @@ namespace api_bot.Services
                 return await _context.MOVIM
                     .AsNoTracking()
                     .Where(v => v.ID_CLIENTE == idCliente 
+                    
                             && v.APLICACAO == 1 
                             && v.CANCELADA == 0
                             && v.TIPOMOV == 1)
@@ -35,6 +36,27 @@ namespace api_bot.Services
                                 (v.TOTAL < v.VR_DEVOLUCAO ? v.VR_DEVOLUCAO : 0)
                     })
                     .ToListAsync();
+            }
+
+        public async Task<ClientDebtDto> ObterDadosVendaPorId(int idVenda, int idCliente)
+            {
+                return await _context.MOVIM
+                    .AsNoTracking()
+                    .Where(v => v.NUMBER == idVenda 
+                            && v.ID_CLIENTE == idCliente 
+                            && v.APLICACAO == 1 
+                            && v.CANCELADA == 0
+                            && v.TIPOMOV == 1)
+                    .OrderByDescending(v => v.DT_ENTREGA)
+                    .Select(v => new ClientDebtDto
+                    {
+                        numeroVenda = v.NUMBER,
+                        Data = v.DT_ENTREGA,
+                        Valor = v.TOTAL + v.RECEBIDO + 
+                                (v.TOTAL < v.VR_CREDITO ? v.VR_CREDITO : 0) + 
+                                (v.TOTAL < v.VR_DEVOLUCAO ? v.VR_DEVOLUCAO : 0)
+                    })
+                    .FirstOrDefaultAsync();
             }
     }
 }

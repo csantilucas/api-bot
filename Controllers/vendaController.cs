@@ -28,5 +28,16 @@ public class VendasController : ControllerBase
 
             return Ok(vendas);
         }
+
+        [HttpGet("id/venda/{idvenda}/{idcliente}")]
+        public async Task<IActionResult> GetVendaId(int idvenda, int idcliente) // Nomes idênticos aos da rota
+        {
+            var venda = await _vendaService.ObterDadosVendaPorId(idvenda, idcliente);
+
+            if (venda == null)
+                return NotFound($"Nenhuma venda número {idvenda} encontrada para o cliente {idcliente}.");
+
+            return Ok(venda);
+        }
 }
 }
