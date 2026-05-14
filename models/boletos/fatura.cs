@@ -10,7 +10,7 @@ namespace api_bot.models
         [Key]
         public string ID_BOLETO_GERADO { get; set; }
         public int ID_CLIENTE { get; set; }
-        public string DT_VENCIMENTO { get; set; }
+        public DateTime DT_VENCIMENTO { get; set; }
         public string DT_EMISSAO { get; set; }
         public int VALOR_BOLETO { get; set; }
         public int LINHA_DIGITAVEL {get;set;}

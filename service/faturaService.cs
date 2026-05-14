@@ -25,7 +25,7 @@ namespace api_bot.Services
                  && v.id_receber > 0
                  && v.boleto_pago == 0
                  && v.pedido_baixa == 0) 
-        .OrderByDescending(v => v.DT_VENCIMENTO)
+        .OrderBy(v => v.DT_VENCIMENTO)
         .Take(3)
         .Select(v => new FaturaDto
         {

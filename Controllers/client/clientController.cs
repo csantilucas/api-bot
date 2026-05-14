@@ -6,7 +6,7 @@ using api_bot.models;
 namespace api_bot.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("data/cliente")]
     public class clientController : ControllerBase
     {
       

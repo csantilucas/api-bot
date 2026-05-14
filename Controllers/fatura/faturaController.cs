@@ -7,7 +7,7 @@ using api_bot.Services;
 namespace api_bot.Controllers
 {
     [ApiController]
-[Route("fatura")]
+[Route("fatura/cliente")]
 public class FaturaControler : ControllerBase
 {
     private readonly FaturaServiceImp _faturaService;
