@@ -8,7 +8,7 @@ namespace api_bot.Controllers
 {
     [ApiController]
 [Route("ccr/cliente")]
-public class CcrControler : ControllerBase
+public class CcrControler : ControllerBase 
 {
     private readonly CcrServiceImp _ccrservice;
 
