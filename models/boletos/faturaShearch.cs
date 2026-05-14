@@ -10,3 +10,12 @@ public class FaturaResponse
 
    
 }
+
+public class FaturaPDFResponse
+{
+    public bool Sucesso { get; set; }
+    public bool BoletosEncontrado { get; set; }
+    public string Mensagem { get; set; }
+    public string Arquivo{get;set;}
+    public FaturaDbtDto fatura { get; set; }
+}

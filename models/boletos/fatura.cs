@@ -8,14 +8,14 @@ namespace api_bot.models
     public class Fatura
     {   
         [Key]
-        public string ID_BOLETO_GERADO { get; set; }
+        public int ID_BOLETO_GERADO { get; set; }
         public int ID_CLIENTE { get; set; }
         public DateTime DT_VENCIMENTO { get; set; }
         public string DT_EMISSAO { get; set; }
         public int VALOR_BOLETO { get; set; }
         public string LINHA_DIGITAVEL {get;set;}
         public int id_receber {get;set;}
-        public int boleto_pago {get;set;}
+        public short boleto_pago {get;set;}
         public int pedido_baixa {get;set;}
         
                 
