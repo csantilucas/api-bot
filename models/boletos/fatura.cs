@@ -13,7 +13,7 @@ namespace api_bot.models
         public DateTime DT_VENCIMENTO { get; set; }
         public string DT_EMISSAO { get; set; }
         public int VALOR_BOLETO { get; set; }
-        public int LINHA_DIGITAVEL {get;set;}
+        public string LINHA_DIGITAVEL {get;set;}
         public int id_receber {get;set;}
         public int boleto_pago {get;set;}
         public int pedido_baixa {get;set;}

@@ -31,7 +31,8 @@ namespace api_bot.Services
         {
             num_bol = v.id_receber,
             dt_fechamento = v.DT_VENCIMENTO,
-            vlr_bol = v.VALOR_BOLETO
+            vlr_bol = v.VALOR_BOLETO,
+            linha_dgt = v.LINHA_DIGITAVEL
         })
         .ToListAsync();
 

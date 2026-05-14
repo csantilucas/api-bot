@@ -6,5 +6,6 @@ namespace api_bot.models
             public 
             DateTime dt_fechamento { get; set; }
             public decimal vlr_bol { get; set; }
+            public string linha_dgt {get;set;}
         }
 }
