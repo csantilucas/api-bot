@@ -7,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Registrando o VendaService para que o Controller consiga usá-lo
 
-builder.Services.AddScoped<VendaService>();
+
+builder.Services.AddScoped<FaturaServiceImp, FaturaService>();
 builder.Services.AddScoped<ClientServiceImp, ClientService>();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();

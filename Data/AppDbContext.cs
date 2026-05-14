@@ -9,7 +9,8 @@ namespace api_bot.Data
 
         // Tabelas disponíveis no Banco
         public DbSet<Client> PESSOA { get; set; }
-        public DbSet<Movim> MOVIM { get; set; }
+        public DbSet<Ccr> UPAG_SIAPE { get; set; }
+        public DbSet<Fatura> boleto_gerado{get;set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,11 +25,17 @@ namespace api_bot.Data
                       .HasDatabaseName("IX_PESSOA_CPF");
             });
 
-            // --- Configuração da Tabela MOVIM ---
-            modelBuilder.Entity<Movim>(entity =>
+            // --- Configuração da Tabela ccr ---
+            modelBuilder.Entity<Ccr>(entity =>
             {
-                entity.ToTable("MOVIM");
-                entity.HasKey(e => e.ID_LAN);
+                entity.ToTable("UPAG_SIAPE");
+                entity.HasKey(e => e.ID_UPAG);
+            });
+            //CONFIG tabela boletos_gerados
+            modelBuilder.Entity<Fatura>(entity =>
+            {
+                entity.ToTable("BOLETO_GERADO");
+                entity.HasKey(e => e.ID_BOLETO_GERADO);
             });
         }
     }

@@ -1,11 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
+
 
 namespace api_bot.models
 {   
     [Table("boleto_gerado")]
-    public class Client
+    public class Fatura
     {   
         [Key]
         public string ID_BOLETO_GERADO { get; set; }
@@ -14,6 +14,9 @@ namespace api_bot.models
         public string DT_EMISSAO { get; set; }
         public int VALOR_BOLETO { get; set; }
         public int LINHA_DIGITAVEL {get;set;}
+        public int id_receber {get;set;}
+        public int boleto_pago {get;set;}
+        public int pedido_baixa {get;set;}
         
                 
     }

@@ -1,3 +1,7 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+
 namespace api_bot.models
 
 {
@@ -5,6 +9,7 @@ namespace api_bot.models
     
     public class Ccr
     {
+        [Key]
         public int ID_UPAG {get;set;}
         public int ID_CLIENTE{ get;set;}
         public int COLETA_CCR_GUIDE {get;set;}

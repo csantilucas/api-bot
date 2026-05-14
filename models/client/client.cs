@@ -16,7 +16,7 @@ namespace api_bot.models
         public string INATIVO { get; set; }
         public string CPF_CONTATO { get; set; }
         public string EMAIL { get; set; }
-        public sbyte COLETA_GUIDE{ get;set;}
+        public string COLETA_GUIDE{ get;set;}
        [JsonIgnore] 
         public string CPF { get; set; }
         
