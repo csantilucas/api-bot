@@ -10,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<FaturaServiceImp, FaturaService>();
 builder.Services.AddScoped<ClientServiceImp, ClientService>();
+builder.Services.AddScoped<ContratoServiceImp, ContratoService>();
+builder.Services.AddScoped<CcrServiceImp, CcrService>();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 

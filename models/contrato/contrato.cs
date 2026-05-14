@@ -5,17 +5,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace api_bot.models
 
 {
-    [Table("UPAG_SIAPE")]
+    [Table("ALPHA_SETOR_CONTRATOS")]
     
-    public class Ccr
+    public class Contrato
     {
         [Key]
-        public int ID_UPAG {get;set;}
+        public int ID_SETOR_CONTRATO {get;set;}
         public int ID_CLIENTE{ get;set;}
-        public string COLETA_CCR_GUIDE {get;set;}
-        public DateTime DATA_COLETA {get;set;}
-        public decimal quantidade {get;set;}
-        public int situacao{get;set;}
+        public int NUMERO_CONTRATO {get;set;}
+        public DateTime DATA_VALIDADE {get;set;}
+        
         [ForeignKey("ID_CLIENTE")]
         public virtual Client Cliente { get; set; }
         

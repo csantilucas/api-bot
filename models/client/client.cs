@@ -19,6 +19,8 @@ namespace api_bot.models
         public string COLETA_GUIDE{ get;set;}
        [JsonIgnore] 
         public string CPF { get; set; }
+        // Permite fazer cliente.Ccrs para ver a lista
+        public virtual ICollection<Ccr> Ccrs { get; set; }
         
     }
 

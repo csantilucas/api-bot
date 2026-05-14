@@ -7,35 +7,51 @@ namespace api_bot.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        // Tabelas disponíveis no Banco
         public DbSet<Client> PESSOA { get; set; }
         public DbSet<Ccr> UPAG_SIAPE { get; set; }
-        public DbSet<Fatura> boleto_gerado{get;set;}
+        public DbSet<Fatura> boleto_gerado { get; set; }
+        public DbSet<Contrato> ALPHA_SETOR_CONTRATOS { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // --- Configuração da Tabela PESSOA ---
+            // --- PESSOA ---
             modelBuilder.Entity<Client>(entity =>
             {
                 entity.ToTable("PESSOA");
                 entity.HasKey(e => e.ID_CLIENTE);
-                
-                // Índice para busca rápida por CPF
-                entity.HasIndex(c => c.CPF)
-                      .HasDatabaseName("IX_PESSOA_CPF");
+                entity.HasIndex(c => c.CPF).HasDatabaseName("IX_PESSOA_CPF");
             });
 
-            // --- Configuração da Tabela ccr ---
+            // --- CONTRATOS (ALPHA_SETOR_CONTRATOS) ---
+            modelBuilder.Entity<Contrato>(entity =>
+            {
+                entity.ToTable("ALPHA_SETOR_CONTRATOS");
+                entity.HasKey(e => e.ID_SETOR_CONTRATO);
+                
+            });
+
+            // --- CCR (UPAG_SIAPE) ---
             modelBuilder.Entity<Ccr>(entity =>
             {
                 entity.ToTable("UPAG_SIAPE");
                 entity.HasKey(e => e.ID_UPAG);
+
+                // Configuração da Relação 
+                entity.HasOne(c => c.Cliente)           
+                      .WithMany(p => p.Ccrs)            
+                      .HasForeignKey(c => c.ID_CLIENTE);
             });
-            //CONFIG tabela boletos_gerados
+
+            // --- FATURA (BOLETO_GERADO) ---
             modelBuilder.Entity<Fatura>(entity =>
             {
                 entity.ToTable("BOLETO_GERADO");
                 entity.HasKey(e => e.ID_BOLETO_GERADO);
+
+                // Se quiser acessar c.Cliente dentro de Fatura também
+                // entity.HasOne(f => f.Cliente)
+                //       .WithMany() // Se não quiser criar uma lista de faturas no model Client, deixe vazio
+                //       .HasForeignKey(f => f.ID_CLIENTE);
             });
         }
     }

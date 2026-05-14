@@ -19,7 +19,7 @@ public class FaturaControler : ControllerBase
 }
 
         [HttpGet("{idCliente}")]
-        public async Task<IActionResult> GetVendas(int idCliente)
+        public async Task<IActionResult> GetFaturas(int idCliente)
         {
             // O Controller agora chama o nome correto do método que está no Service
             var fatura = await _faturaService.BuscarPorIDAsync(idCliente);
