@@ -28,7 +28,7 @@ public class CcrService : CcrServiceImp
             dt_coleta = c.DATA_COLETA,
             quant_coleta = c.quantidade,
             
-            link = $"https://documentos-alphasoftware.premiumasp.net/Coletas/fac80544-be9d-4d1d-8117-54548dddf904/{c.COLETA_CCR_GUIDE}/{c.Cliente.COLETA_GUIDE}"
+            link = $"https://documentos-alphasoftware.premiumasp.net/Coletas/B6B29824-F686-4382-9F5A-E3981A9A0A0C/{c.COLETA_CCR_GUIDE}/{c.Cliente.COLETA_GUIDE}"
         })
         .ToListAsync();
 
